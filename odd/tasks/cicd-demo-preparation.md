@@ -10,7 +10,7 @@ Delivery: single-pr initial import; no application behavior changes planned. Run
 - T1 [S1] inline: local prerequisites, extract and verify package — complete; hashes and Bash syntax checks passed.
 - T2 [S1,S2] inline: publish initial demo repository and verify test/build pipeline — complete (run 40015992610 attempt2). Risk: item 5 (CI and deployment configuration).
 - T3 [S1,S2] inline: configure Render Free, production secret, APP_URL and branch protection — complete (user configuration and successful deploy). Risk: items 2 and 5 (deploy secret, branch guard and deployment).
-- T4 [S1] inline: verify successful deployment, prepare failing PR without merging, capture DORA — pending.
+- T4 [S1] inline: verify successful deployment, prepare failing PR without merging, capture DORA — complete; PR4 reserved for live demo, PR5 intentionally failing and BLOCKED.
 
 ## Log
 - L1 Original request: "implementa la guia para tener preparado el ordenador"
@@ -32,3 +32,7 @@ Delivery: single-pr initial import; no application behavior changes planned. Run
 
 - L14 User request: "de aqui trata de hacerlo todo lo demas tu aver porfa" authorizes resuming remaining setup and practical rehearsal. User supplied proof of public GHCR, Render Live/1.0.0, health path, APP_URL and production secret. gh variable/secret listings confirm names and public URL without retrieving secret value. Failed attempt expanded curl to /health (empty base URL); workflow created20:01Z, APP_URL added20:21Z. Reran only failed jobs and approved existing production gate. Run40015992610 attempt2 PASS; public health healthy1.0.0/exact83fe48fSHA. No source change needed for URL configuration.
 - L15 Preparing rehearsal1.1.0 with practical instructions; next version1.2.0 stays unmerged for the user, error-demo stays unmerged and failing. Conventional commits used; packaged force-push script is not run. Risk: none (version metadata and passive docs only; CI and app logic unchanged).
+
+- L16 Rehearsal PR3 mergedccf6fca346b01febcc0ecdda0c81816d66918e77. Run40020594206 PASS tests/build/image smoke/Trivy/publication/deploy; public health confirms1.1.0/exactSHA. Created20:36:59Z,completed20:38:45Z (~106s incl approval). Render shows Live10.8s deployment from DeployHook; rollback links on prior deployments verified read-only and not executed. Free plan retained; secret never retrieved.
+- L17 PR4 version-1-2-0 remains OPEN for presentation; npmtest3pass. PR5 error-demo remains OPEN, testFAIL(expected9instead90), mergeStateStatusBLOCKED; never merged or force-pushed. Main restored and npmtest3pass. Main protection verified requiredtest,stricttrue,0approvals. Production approval remains enabled.
+- L18 DORA actual snapshot saved outside repository: C:\Users\kevin\Documents\demo-cicd-practica\metricas-dora.txt (2successful,0.4/week,18min averagelead,50percentfail,41min recovery). These are workflow proxies including setup/approval delays, not formal incident metrics. Ready instructions C:\Users\kevin\Documents\demo-cicd-practica\INICIAR-PRACTICA.md. No rollback or live1.2merge executed. Remaining human action: practice presentation,recordbackup,thenmergePR4atdemotime. Engram mirror unavailable; earlier scratch cleanup denial preserved.
