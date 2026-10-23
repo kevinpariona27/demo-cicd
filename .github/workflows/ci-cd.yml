@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
       - run: npm ci
       - run: npm test
@@ -36,6 +36,14 @@ jobs:
 
       - name: Construir imagen
         run: docker build --build-arg GIT_SHA=${{ github.sha }} -t "$IMAGE:${{ github.sha }}" .
+
+      - name: Comprobar la imagen en ejecución
+        run: |
+          docker run -d --name demo-smoke -p 127.0.0.1:3000:3000 "$IMAGE:${{ github.sha }}"
+          trap 'docker rm -f demo-smoke' EXIT
+          curl -fsS --retry 10 --retry-connrefused --retry-delay 1 http://127.0.0.1:3000/health \
+            | jq -e --arg sha "${{ github.sha }}" --arg version "$(jq -r .version package.json)" \
+              '.status == "healthy" and .commit == $sha and .version == $version'
 
       - name: Escaneo de seguridad (Trivy)
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0

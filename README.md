@@ -10,7 +10,7 @@ API de demostración para la exposición de CI/CD — Arquitectura de Software (
 | --- | --- |
 | `src/app.js`, `src/server.js` | API Express con `/` (página con la versión) y `/health` |
 | `test/app.test.js` | Pruebas unitarias (quality gate) |
-| `Dockerfile` | Imagen multi-stage sobre `node:20-alpine` |
+| `Dockerfile` | Imagen multi-stage sobre `node:24-alpine` |
 | `.github/workflows/ci-cd.yml` | Pipeline: test → build + Trivy + GHCR → deploy en Render + health check |
 | `scripts/cambiar-version.sh` | Escenario 1: cambia la versión y abre el pull request |
 | `scripts/preparar-error.sh` | Escenario 2: abre un pull request con un error a propósito |
@@ -42,3 +42,5 @@ bash scripts/dora.sh 30
 ```
 
 El cambio de versión usa `npm version`, por lo que ese script sí requiere Node.js y npm locales. Los scripts de cambio y error publican ramas y crean pull requests; no son comprobaciones locales. No fusione `error-demo` ni ejecute su preparación sobre trabajo sin guardar.
+
+La imagen de producción usa Node 24, actualiza los paquetes de Alpine y no incluye npm ni Yarn en la etapa final. El pipeline comprueba /health de la imagen antes del escaneo de seguridad; no se desactiva el bloqueo de vulnerabilidades altas o críticas.
