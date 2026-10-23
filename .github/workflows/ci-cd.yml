@@ -41,7 +41,7 @@ jobs:
         run: |
           docker run -d --name demo-smoke -p 127.0.0.1:3000:3000 "$IMAGE:${{ github.sha }}"
           trap 'docker rm -f demo-smoke' EXIT
-          curl -fsS --retry 10 --retry-connrefused --retry-delay 1 http://127.0.0.1:3000/health \
+          curl -fsS --retry 10 --retry-all-errors --retry-connrefused --retry-delay 1 --connect-timeout 3 --max-time 10 http://127.0.0.1:3000/health \
             | jq -e --arg sha "${{ github.sha }}" --arg version "$(jq -r .version package.json)" \
               '.status == "healthy" and .commit == $sha and .version == $version'
 
