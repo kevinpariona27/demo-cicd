@@ -29,3 +29,16 @@ npm install
 npm test
 npm start          # http://localhost:3000 y http://localhost:3000/health
 ```
+
+## Preparación en Windows
+
+Use Git Bash desde esta carpeta. Git, GitHub CLI, jq, Node.js y npm ya están disponibles en el equipo preparado; no se requiere instalar WSL ni Docker para operar la demo.
+
+```bash
+npm ci
+npm test
+bash scripts/cambiar-version.sh 1.1.0
+bash scripts/dora.sh 30
+```
+
+El cambio de versión usa `npm version`, por lo que ese script sí requiere Node.js y npm locales. Los scripts de cambio y error publican ramas y crean pull requests; no son comprobaciones locales. No fusione `error-demo` ni ejecute su preparación sobre trabajo sin guardar.
