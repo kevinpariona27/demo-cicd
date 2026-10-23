@@ -8,8 +8,8 @@ Delivery: single-pr initial import; no application behavior changes planned. Run
 
 ## Tasks
 - T1 [S1] inline: local prerequisites, extract and verify package — complete; hashes and Bash syntax checks passed.
-- T2 [S1,S2] inline: publish initial demo repository and verify test/build pipeline — pending. Risk: item 5 (CI and deployment configuration).
-- T3 [S1,S2] inline: configure Render Free, production secret, APP_URL and branch protection — pending. Risk: items 2 and 5 (deploy secret, branch guard and deployment).
+- T2 [S1,S2] inline: publish initial demo repository and verify test/build pipeline — complete (run 40015992610 attempt2). Risk: item 5 (CI and deployment configuration).
+- T3 [S1,S2] inline: configure Render Free, production secret, APP_URL and branch protection — complete (user configuration and successful deploy). Risk: items 2 and 5 (deploy secret, branch guard and deployment).
 - T4 [S1] inline: verify successful deployment, prepare failing PR without merging, capture DORA — pending.
 
 ## Log
@@ -29,3 +29,6 @@ Delivery: single-pr initial import; no application behavior changes planned. Run
 - L11 T3 PARTIAL: main requires PR+test (zero approvals); production requires owner review and protected branches. Render signed in, Existing Image form open, no service created. APP_URL and deploy secret pending image publication. T4 not started. RDD explicitly globally OFF. Local/independent tests3/3 and audit0 passed.
 - L12 Scratch cleanup was denied before execution; retained C:\Users\kevin\AppData\Local\Temp\npm-vitest-diagnose-61be735a717445c6a1ccaef168465ad9 and C:\Users\kevin\AppData\Local\Temp\tmp.UgUJZyd2W6. Do not claim cleanup. Engram mirror remains unavailable (resolved project rejected as unbacked).
 - L13 User authorized additional correction and completion: "si prepara todo para ya poder hacer hacer la parte practica". Retry startup on all transient curl errors with finite retry count and request timeouts; do not weaken health assertion or security scan. Prior hosted run is RED evidence; GREEN requires hosted container smoke and scan. Risk: item5 (CI).
+
+- L14 User request: "de aqui trata de hacerlo todo lo demas tu aver porfa" authorizes resuming remaining setup and practical rehearsal. User supplied proof of public GHCR, Render Live/1.0.0, health path, APP_URL and production secret. gh variable/secret listings confirm names and public URL without retrieving secret value. Failed attempt expanded curl to /health (empty base URL); workflow created20:01Z, APP_URL added20:21Z. Reran only failed jobs and approved existing production gate. Run40015992610 attempt2 PASS; public health healthy1.0.0/exact83fe48fSHA. No source change needed for URL configuration.
+- L15 Preparing rehearsal1.1.0 with practical instructions; next version1.2.0 stays unmerged for the user, error-demo stays unmerged and failing. Conventional commits used; packaged force-push script is not run. Risk: none (version metadata and passive docs only; CI and app logic unchanged).
